@@ -6,13 +6,6 @@ the following sections.
 
 # Bootstrap
 
-#### TL;DR
-
-To bootstrap the project, run `make` from the root directory.
-
-
-####
-
 This project includes a bootstrap shell script at `scripts/bootstrap.sh` that will handle
 all of the pre-run tasks for you and set you up to start developing immediately.
 

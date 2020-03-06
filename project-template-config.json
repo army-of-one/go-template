@@ -1,0 +1,27 @@
+{
+  "prompts": [
+    {
+      "name": "project_name",
+      "text": "Project Name",
+      "default": "Example API",
+      "transformations": [
+        {
+          "name": "project_name_dashes",
+          "transformation": "DASHES"
+        },
+        {
+          "name": "project_name_name",
+          "transformation": "SNAKE"
+        }
+      ]
+    },
+    {
+      "name": "author_name",
+      "text": "Author Name"
+    },
+    {
+      "name": "author_email",
+      "text": "Author Email"
+    }
+  ]
+}
