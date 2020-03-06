@@ -1,1 +1,7 @@
+
+# Compiled Binaries
 bin
+
+# Jetbrains
+*.idea
+*.iml
