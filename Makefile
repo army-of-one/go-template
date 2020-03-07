@@ -7,20 +7,20 @@ bootstrap:
 
 # Go commands - run the go code directly
 build:
-	go build -o ../bin/main cmd/main.go
+	exec go build -o ../bin/main cmd/main.go
 
 run:
-	go run cmd/main.go
+	exec go run cmd/main.go
 
 # Compile the go code
 compile-linux-arm:
-	GOOS=linux GOARCH=arm go build -o bin/main-linux-arm cmd/main.go
+	exec GOOS=linux GOARCH=arm go build -o bin/main-linux-arm cmd/main.go
 
 compile-linux-arm64:
-	GOOS=linux GOARCH=arm64 go build -o bin/main-linux-arm64 cmd/main.go
+	exec GOOS=linux GOARCH=arm64 go build -o bin/main-linux-arm64 cmd/main.go
 
 compile-freebsd-386:
-	GOOS=freebsd GOARCH=386 go build -o bin/main-freebsd-386 cmd/main.go
+	exec GOOS=freebsd GOARCH=386 go build -o bin/main-freebsd-386 cmd/main.go
 
 compile: compile-linux-arm compile-linux-arm64 compile-freebsd-386
 
