@@ -10,7 +10,7 @@
           "transformation": "DASHES"
         },
         {
-          "name": "project_name_name",
+          "name": "project_name_snake",
           "transformation": "SNAKE"
         }
       ]

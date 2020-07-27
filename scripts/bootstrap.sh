@@ -4,8 +4,49 @@
 # the developer of Generoo, believes that every project should include a `bootstrap` file that new developers can
 # run once and will set up all the necessary dependencies for the project.
 
+if ! [[ $(id -u) = 0 ]]; then
+   echo "Run this script as root."
+   exit 1
+fi
+
 echo Bootstrapping {{project_name}}...
+
+echo Making sure bin directory exists in root.
+mkdir -p ../bin
 
 DIR=`pwd`
 
-make build
+# Install make
+if [[ $(which make -A) ]]; then
+    echo "Found make."
+else
+    echo "Unable to find make command, install make and then try again."
+    exit 1
+fi
+
+# Install go-swagger (binary)
+#download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | \
+#  jq -r '.assets[] | select(.name | contains("'"$(uname | tr '[:upper:]' '[:lower:]')"'_amd64")) | .browser_download_url')
+#curl -o ../bin/swagger -L'#' "$download_url"
+#chmod +x ../bin/swagger
+
+if [[ $(which docker -A) ]]; then
+    echo "Found docker."
+else
+    echo "Unable to find docker command, install docker and then try again."
+    exit 1
+fi
+
+# Install go-swagger (docker)
+docker pull quay.io/goswagger/swagger
+
+
+echo Done bootstrapping, doing a little house keeping...
+# Cleans up git keep files that are used for templating purposes
+find . -type f -name '.gitkeep' -exec rm {} +
+
+cd ..
+
+# TODO: Add make commands to do go mod tasks and build targets
+
+echo "Done! Check out the Makefile in the root for more commands (like 'make build' or 'make run')"

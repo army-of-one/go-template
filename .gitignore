@@ -5,3 +5,5 @@ bin
 # Jetbrains
 *.idea
 *.iml
+
+vendor
